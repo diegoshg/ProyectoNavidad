@@ -4,6 +4,8 @@
  */
 package Vista;
 
+import com.formdev.flatlaf.intellijthemes.FlatLightFlatIJTheme;
+
 /**
  *
  * @author Diego Sanchez Gandara
@@ -26,17 +28,34 @@ public class Loggin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        fondo = new javax.swing.JPanel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        fondo.setBackground(new java.awt.Color(0, 0, 0));
+
+        javax.swing.GroupLayout fondoLayout = new javax.swing.GroupLayout(fondo);
+        fondo.setLayout(fondoLayout);
+        fondoLayout.setHorizontalGroup(
+            fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 531, Short.MAX_VALUE)
+        );
+        fondoLayout.setVerticalGroup(
+            fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 573, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 531, Short.MAX_VALUE)
+            .addComponent(fondo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 565, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(fondo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -68,7 +87,7 @@ public class Loggin extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Loggin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+        FlatLightFlatIJTheme.setup();
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -78,5 +97,6 @@ public class Loggin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel fondo;
     // End of variables declaration//GEN-END:variables
 }
