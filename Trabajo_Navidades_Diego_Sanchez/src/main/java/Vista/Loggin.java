@@ -30,49 +30,62 @@ public class Loggin extends javax.swing.JFrame {
 
         fondo = new javax.swing.JPanel();
         panelInterior = new javax.swing.JPanel();
+        Usuario = new javax.swing.JTextField();
+        jPasswordField1 = new javax.swing.JPasswordField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         fondo.setBackground(new java.awt.Color(0, 0, 0));
 
-        panelInterior.setBackground(new java.awt.Color(255, 255, 255));
+        panelInterior.setBackground(new java.awt.Color(248, 248, 248));
+        panelInterior.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout panelInteriorLayout = new javax.swing.GroupLayout(panelInterior);
-        panelInterior.setLayout(panelInteriorLayout);
-        panelInteriorLayout.setHorizontalGroup(
-            panelInteriorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 531, Short.MAX_VALUE)
-        );
-        panelInteriorLayout.setVerticalGroup(
-            panelInteriorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 490, Short.MAX_VALUE)
-        );
+        Usuario.setBackground(new java.awt.Color(255, 255, 255));
+        Usuario.setForeground(new java.awt.Color(153, 153, 153));
+        Usuario.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        Usuario.setText("email o nombre de usuario");
+        panelInterior.add(Usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 60, 257, 54));
+
+        jPasswordField1.setBackground(new java.awt.Color(255, 255, 255));
+        jPasswordField1.setForeground(new java.awt.Color(153, 153, 153));
+        jPasswordField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jPasswordField1.setText("jPasswordField1");
+        panelInterior.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 230, 250, 60));
+
+        jLabel1.setFont(new java.awt.Font("Eras Bold ITC", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("BIENVENIDO DE \nNUEVO");
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/charmander 1.png"))); // NOI18N
 
         javax.swing.GroupLayout fondoLayout = new javax.swing.GroupLayout(fondo);
         fondo.setLayout(fondoLayout);
         fondoLayout.setHorizontalGroup(
             fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(fondoLayout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(46, 46, 46)
+                .addComponent(jLabel2))
             .addComponent(panelInterior, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         fondoLayout.setVerticalGroup(
             fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(fondoLayout.createSequentialGroup()
-                .addGap(90, 90, 90)
-                .addComponent(panelInterior, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(8, 8, 8)
+                .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(fondoLayout.createSequentialGroup()
+                        .addGap(2, 2, 2)
+                        .addComponent(jLabel2)))
+                .addGap(35, 35, 35)
+                .addComponent(panelInterior, javax.swing.GroupLayout.DEFAULT_SIZE, 514, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(fondo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(fondo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
+        getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -113,7 +126,11 @@ public class Loggin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField Usuario;
     private javax.swing.JPanel fondo;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JPanel panelInterior;
     // End of variables declaration//GEN-END:variables
 }
