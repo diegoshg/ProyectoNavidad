@@ -50,7 +50,6 @@ public class Loggin extends javax.swing.JFrame {
         fondo.setBackground(new java.awt.Color(0, 0, 0));
 
         panelInterior.setBackground(new java.awt.Color(248, 248, 248));
-        panelInterior.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Usuario.setBackground(new java.awt.Color(255, 255, 255));
         Usuario.setForeground(new java.awt.Color(102, 102, 102));
@@ -67,7 +66,6 @@ public class Loggin extends javax.swing.JFrame {
                 UsuarioMouseExited(evt);
             }
         });
-        panelInterior.add(Usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(59, 44, 257, 54));
 
         Contrasena.setBackground(new java.awt.Color(255, 255, 255));
         Contrasena.setForeground(new java.awt.Color(102, 102, 102));
@@ -84,39 +82,81 @@ public class Loggin extends javax.swing.JFrame {
                 ContrasenaMouseExited(evt);
             }
         });
-        panelInterior.add(Contrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(59, 147, 250, 60));
 
         botonIniciarSesion.setBackground(new java.awt.Color(0, 0, 0));
         botonIniciarSesion.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
         botonIniciarSesion.setForeground(new java.awt.Color(255, 255, 255));
         botonIniciarSesion.setText("Iniciar Sesion");
-        panelInterior.add(botonIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(91, 242, 192, 40));
 
         botonOlvidada.setForeground(new java.awt.Color(244, 40, 84));
         botonOlvidada.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         botonOlvidada.setText("Olvidaste tu contraseña ?");
-        panelInterior.add(botonOlvidada, new org.netbeans.lib.awtextra.AbsoluteConstraints(87, 341, 208, 14));
 
         jLabel3.setForeground(new java.awt.Color(244, 40, 84));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("_________");
-        panelInterior.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(288, 398, 60, -1));
 
         jLabel4.setForeground(new java.awt.Color(244, 40, 84));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("_________");
-        panelInterior.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 398, 60, -1));
 
         jLabel5.setForeground(new java.awt.Color(244, 40, 84));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("No tienes cuenta ?");
-        panelInterior.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(113, 400, 147, 14));
 
         botonRegistrarse.setBackground(new java.awt.Color(0, 0, 0));
         botonRegistrarse.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
         botonRegistrarse.setForeground(new java.awt.Color(255, 255, 255));
         botonRegistrarse.setText("Registrarse");
-        panelInterior.add(botonRegistrarse, new org.netbeans.lib.awtextra.AbsoluteConstraints(86, 439, 192, 44));
+
+        javax.swing.GroupLayout panelInteriorLayout = new javax.swing.GroupLayout(panelInterior);
+        panelInterior.setLayout(panelInteriorLayout);
+        panelInteriorLayout.setHorizontalGroup(
+            panelInteriorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelInteriorLayout.createSequentialGroup()
+                .addGap(59, 59, 59)
+                .addComponent(Usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(panelInteriorLayout.createSequentialGroup()
+                .addGap(59, 59, 59)
+                .addComponent(Contrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(panelInteriorLayout.createSequentialGroup()
+                .addGap(91, 91, 91)
+                .addComponent(botonIniciarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(panelInteriorLayout.createSequentialGroup()
+                .addGap(87, 87, 87)
+                .addComponent(botonOlvidada, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(panelInteriorLayout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(23, 23, 23)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(panelInteriorLayout.createSequentialGroup()
+                .addGap(86, 86, 86)
+                .addComponent(botonRegistrarse, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        panelInteriorLayout.setVerticalGroup(
+            panelInteriorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelInteriorLayout.createSequentialGroup()
+                .addGap(44, 44, 44)
+                .addComponent(Usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(49, 49, 49)
+                .addComponent(Contrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35)
+                .addComponent(botonIniciarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(59, 59, 59)
+                .addComponent(botonOlvidada, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(43, 43, 43)
+                .addGroup(panelInteriorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4)
+                    .addGroup(panelInteriorLayout.createSequentialGroup()
+                        .addGap(2, 2, 2)
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel3))
+                .addGap(25, 25, 25)
+                .addComponent(botonRegistrarse, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
 
         jLabel1.setFont(new java.awt.Font("Eras Bold ITC", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -132,8 +172,9 @@ public class Loggin extends javax.swing.JFrame {
                 .addGap(23, 23, 23)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(46, 46, 46)
-                .addComponent(jLabel2))
-            .addComponent(panelInterior, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel2)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(panelInterior, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         fondoLayout.setVerticalGroup(
             fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -145,10 +186,10 @@ public class Loggin extends javax.swing.JFrame {
                         .addGap(2, 2, 2)
                         .addComponent(jLabel2)))
                 .addGap(35, 35, 35)
-                .addComponent(panelInterior, javax.swing.GroupLayout.PREFERRED_SIZE, 514, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(panelInterior, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 375, 667));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

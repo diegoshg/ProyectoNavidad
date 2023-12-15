@@ -33,7 +33,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="0" y="0" width="-1" height="-1"/>
+          <AbsoluteConstraints x="0" y="0" width="375" height="667"/>
         </Constraint>
       </Constraints>
 
@@ -45,8 +45,9 @@
                   <Component id="jLabel1" min="-2" pref="193" max="-2" attributes="0"/>
                   <EmptySpace min="46" pref="46" max="-2" attributes="0"/>
                   <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="3" max="32767" attributes="0"/>
               </Group>
-              <Component id="panelInterior" min="-2" pref="375" max="-2" attributes="0"/>
+              <Component id="panelInterior" alignment="0" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
@@ -60,8 +61,8 @@
                           <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace min="35" pref="35" max="-2" attributes="0"/>
-                  <Component id="panelInterior" min="-2" pref="514" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                  <Component id="panelInterior" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -74,8 +75,64 @@
             </Property>
           </Properties>
 
-          <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
-            <Property name="useNullLayout" type="boolean" value="false"/>
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="59" pref="59" max="-2" attributes="0"/>
+                      <Component id="Usuario" min="-2" pref="257" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="59" pref="59" max="-2" attributes="0"/>
+                      <Component id="Contrasena" min="-2" pref="250" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="91" pref="91" max="-2" attributes="0"/>
+                      <Component id="botonIniciarSesion" min="-2" pref="192" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="87" pref="87" max="-2" attributes="0"/>
+                      <Component id="botonOlvidada" min="-2" pref="208" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="30" pref="30" max="-2" attributes="0"/>
+                      <Component id="jLabel4" min="-2" pref="60" max="-2" attributes="0"/>
+                      <EmptySpace min="23" pref="23" max="-2" attributes="0"/>
+                      <Component id="jLabel5" min="-2" pref="147" max="-2" attributes="0"/>
+                      <EmptySpace min="28" pref="28" max="-2" attributes="0"/>
+                      <Component id="jLabel3" min="-2" pref="60" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="86" pref="86" max="-2" attributes="0"/>
+                      <Component id="botonRegistrarse" min="-2" pref="192" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="44" pref="44" max="-2" attributes="0"/>
+                      <Component id="Usuario" min="-2" pref="54" max="-2" attributes="0"/>
+                      <EmptySpace min="49" pref="49" max="-2" attributes="0"/>
+                      <Component id="Contrasena" min="-2" pref="60" max="-2" attributes="0"/>
+                      <EmptySpace min="35" pref="35" max="-2" attributes="0"/>
+                      <Component id="botonIniciarSesion" min="-2" pref="40" max="-2" attributes="0"/>
+                      <EmptySpace min="59" pref="59" max="-2" attributes="0"/>
+                      <Component id="botonOlvidada" min="-2" pref="14" max="-2" attributes="0"/>
+                      <EmptySpace min="43" pref="43" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="2" pref="2" max="-2" attributes="0"/>
+                              <Component id="jLabel5" min="-2" pref="14" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="25" pref="25" max="-2" attributes="0"/>
+                      <Component id="botonRegistrarse" min="-2" pref="44" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
           </Layout>
           <SubComponents>
             <Component class="javax.swing.JTextField" name="Usuario">
@@ -94,11 +151,6 @@
                 <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="UsuarioMouseEntered"/>
                 <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="UsuarioMouseExited"/>
               </Events>
-              <Constraints>
-                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="59" y="44" width="257" height="54"/>
-                </Constraint>
-              </Constraints>
             </Component>
             <Component class="javax.swing.JPasswordField" name="Contrasena">
               <Properties>
@@ -116,11 +168,6 @@
                 <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="ContrasenaMouseEntered"/>
                 <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="ContrasenaMouseExited"/>
               </Events>
-              <Constraints>
-                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="59" y="147" width="250" height="60"/>
-                </Constraint>
-              </Constraints>
             </Component>
             <Component class="javax.swing.JButton" name="botonIniciarSesion">
               <Properties>
@@ -135,11 +182,6 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Iniciar Sesion"/>
               </Properties>
-              <Constraints>
-                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="91" y="242" width="192" height="40"/>
-                </Constraint>
-              </Constraints>
             </Component>
             <Component class="javax.swing.JLabel" name="botonOlvidada">
               <Properties>
@@ -149,11 +191,6 @@
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" value="Olvidaste tu contrase&#xf1;a ?"/>
               </Properties>
-              <Constraints>
-                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="87" y="341" width="208" height="14"/>
-                </Constraint>
-              </Constraints>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel3">
               <Properties>
@@ -163,11 +200,6 @@
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" value="_________"/>
               </Properties>
-              <Constraints>
-                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="288" y="398" width="60" height="-1"/>
-                </Constraint>
-              </Constraints>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel4">
               <Properties>
@@ -177,11 +209,6 @@
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" value="_________"/>
               </Properties>
-              <Constraints>
-                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="30" y="398" width="60" height="-1"/>
-                </Constraint>
-              </Constraints>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel5">
               <Properties>
@@ -191,11 +218,6 @@
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" value="No tienes cuenta ?"/>
               </Properties>
-              <Constraints>
-                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="113" y="400" width="147" height="14"/>
-                </Constraint>
-              </Constraints>
             </Component>
             <Component class="javax.swing.JButton" name="botonRegistrarse">
               <Properties>
@@ -210,11 +232,6 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Registrarse"/>
               </Properties>
-              <Constraints>
-                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="86" y="439" width="192" height="44"/>
-                </Constraint>
-              </Constraints>
             </Component>
           </SubComponents>
         </Container>
