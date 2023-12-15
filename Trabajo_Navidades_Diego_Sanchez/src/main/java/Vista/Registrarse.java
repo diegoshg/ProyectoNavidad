@@ -4,6 +4,8 @@
  */
 package Vista;
 
+import com.formdev.flatlaf.intellijthemes.FlatLightFlatIJTheme;
+
 /**
  *
  * @author Diego Sanchez Gandara
@@ -15,6 +17,7 @@ public class Registrarse extends javax.swing.JFrame {
      */
     public Registrarse() {
         initComponents();
+        botonCrearCuenta.putClientProperty( "JButton.buttonType" , "roundRect" );
     }
 
     /**
@@ -28,8 +31,14 @@ public class Registrarse extends javax.swing.JFrame {
 
         fondo = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        usuarioNuevo = new javax.swing.JTextField();
+        jPasswordField1 = new javax.swing.JPasswordField();
+        botonCrearCuenta = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        labelVolver = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -38,17 +47,32 @@ public class Registrarse extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 375, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 576, Short.MAX_VALUE)
-        );
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/zelda.png"))); // NOI18N
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 3, 184, 176));
+
+        jLabel2.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setText("Usuario:");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 152, 128, 40));
+
+        jLabel4.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setText("Contraseña:");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 323, 128, 40));
+
+        usuarioNuevo.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.add(usuarioNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 216, 312, 54));
+
+        jPasswordField1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 377, 312, 54));
+
+        botonCrearCuenta.setBackground(new java.awt.Color(0, 0, 0));
+        botonCrearCuenta.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
+        botonCrearCuenta.setForeground(new java.awt.Color(255, 255, 255));
+        botonCrearCuenta.setText("REGISTRARSE");
+        jPanel1.add(botonCrearCuenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(72, 480, 235, 49));
 
         fondo.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 91, 375, 576));
 
@@ -56,8 +80,13 @@ public class Registrarse extends javax.swing.JFrame {
         jLabel1.setText("REGISTRARSE");
         fondo.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 150, 60));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/volver.png"))); // NOI18N
-        fondo.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(293, 29, 50, 33));
+        labelVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/volver.png"))); // NOI18N
+        labelVolver.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                labelVolverMouseClicked(evt);
+            }
+        });
+        fondo.add(labelVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(293, 29, 50, 33));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -72,6 +101,10 @@ public class Registrarse extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void labelVolverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelVolverMouseClicked
+        dispose();
+    }//GEN-LAST:event_labelVolverMouseClicked
 
     /**
      * @param args the command line arguments
@@ -99,6 +132,7 @@ public class Registrarse extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Registrarse.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        FlatLightFlatIJTheme.setup();
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -109,9 +143,15 @@ public class Registrarse extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botonCrearCuenta;
     private javax.swing.JPanel fondo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPasswordField jPasswordField1;
+    private javax.swing.JLabel labelVolver;
+    private javax.swing.JTextField usuarioNuevo;
     // End of variables declaration//GEN-END:variables
 }
