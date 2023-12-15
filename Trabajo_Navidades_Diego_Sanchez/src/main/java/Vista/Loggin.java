@@ -17,6 +17,7 @@ public class Loggin extends javax.swing.JFrame {
      */
     public Loggin() {
         initComponents();
+        botonIniciarSesion.putClientProperty( "JButton.buttonType" , "roundRect" );
     }
 
     /**
@@ -32,6 +33,7 @@ public class Loggin extends javax.swing.JFrame {
         panelInterior = new javax.swing.JPanel();
         Usuario = new javax.swing.JTextField();
         jPasswordField1 = new javax.swing.JPasswordField();
+        botonIniciarSesion = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
@@ -47,13 +49,18 @@ public class Loggin extends javax.swing.JFrame {
         Usuario.setForeground(new java.awt.Color(153, 153, 153));
         Usuario.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         Usuario.setText("email o nombre de usuario");
-        panelInterior.add(Usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 60, 257, 54));
+        panelInterior.add(Usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(59, 44, 257, 54));
 
         jPasswordField1.setBackground(new java.awt.Color(255, 255, 255));
         jPasswordField1.setForeground(new java.awt.Color(153, 153, 153));
         jPasswordField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jPasswordField1.setText("jPasswordField1");
-        panelInterior.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 230, 250, 60));
+        panelInterior.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(59, 147, 250, 60));
+
+        botonIniciarSesion.setBackground(new java.awt.Color(0, 0, 0));
+        botonIniciarSesion.setForeground(new java.awt.Color(255, 255, 255));
+        botonIniciarSesion.setText("Iniciar Sesion");
+        panelInterior.add(botonIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(91, 242, 192, 40));
 
         jLabel1.setFont(new java.awt.Font("Eras Bold ITC", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -127,6 +134,7 @@ public class Loggin extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Usuario;
+    private javax.swing.JButton botonIniciarSesion;
     private javax.swing.JPanel fondo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
