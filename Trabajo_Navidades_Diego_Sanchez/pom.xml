@@ -11,7 +11,7 @@
         <maven.compiler.target>17</maven.compiler.target>
         <exec.mainClass>com.mycompany.trabajo_navidades_diego_sanchez.Trabajo_Navidades_Diego_Sanchez</exec.mainClass>
     </properties>
-    <dependencies>
+   <dependencies>
         <dependency>
             <groupId>org.netbeans.external</groupId>
             <artifactId>AbsoluteLayout</artifactId>
