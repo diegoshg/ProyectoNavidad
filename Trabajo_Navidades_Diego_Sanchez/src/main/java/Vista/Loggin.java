@@ -226,6 +226,7 @@ public class Loggin extends javax.swing.JFrame {
     private void botonRegistrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistrarseActionPerformed
         regis = new Registrarse();
         regis.setVisible(true);
+        dispose();
     }//GEN-LAST:event_botonRegistrarseActionPerformed
 
     /**

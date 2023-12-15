@@ -11,7 +11,7 @@ import com.formdev.flatlaf.intellijthemes.FlatLightFlatIJTheme;
  * @author Diego Sanchez Gandara
  */
 public class Registrarse extends javax.swing.JFrame {
-
+    private Loggin log;
     /**
      * Creates new form Registrarse
      */
@@ -104,6 +104,13 @@ public class Registrarse extends javax.swing.JFrame {
 
     private void labelVolverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelVolverMouseClicked
         dispose();
+        System.out.println(log);
+        if (log == null) {
+            log = new Loggin();
+            log.setVisible(true);
+        }
+        
+        
     }//GEN-LAST:event_labelVolverMouseClicked
 
     /**
