@@ -18,6 +18,7 @@ public class Loggin extends javax.swing.JFrame {
     public Loggin() {
         initComponents();
         botonIniciarSesion.putClientProperty( "JButton.buttonType" , "roundRect" );
+        botonRegistrarse.putClientProperty( "JButton.buttonType" , "roundRect" );
     }
 
     /**
@@ -34,6 +35,11 @@ public class Loggin extends javax.swing.JFrame {
         Usuario = new javax.swing.JTextField();
         jPasswordField1 = new javax.swing.JPasswordField();
         botonIniciarSesion = new javax.swing.JButton();
+        botonOlvidada = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        botonRegistrarse = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
@@ -58,9 +64,36 @@ public class Loggin extends javax.swing.JFrame {
         panelInterior.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(59, 147, 250, 60));
 
         botonIniciarSesion.setBackground(new java.awt.Color(0, 0, 0));
+        botonIniciarSesion.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
         botonIniciarSesion.setForeground(new java.awt.Color(255, 255, 255));
         botonIniciarSesion.setText("Iniciar Sesion");
         panelInterior.add(botonIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(91, 242, 192, 40));
+
+        botonOlvidada.setForeground(new java.awt.Color(244, 40, 84));
+        botonOlvidada.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        botonOlvidada.setText("Olvidaste tu contraseña ?");
+        panelInterior.add(botonOlvidada, new org.netbeans.lib.awtextra.AbsoluteConstraints(87, 341, 208, 14));
+
+        jLabel3.setForeground(new java.awt.Color(244, 40, 84));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("_________");
+        panelInterior.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(288, 398, 60, -1));
+
+        jLabel4.setForeground(new java.awt.Color(244, 40, 84));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("_________");
+        panelInterior.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 398, 60, -1));
+
+        jLabel5.setForeground(new java.awt.Color(244, 40, 84));
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText("No tienes cuenta ?");
+        panelInterior.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(113, 400, 147, 14));
+
+        botonRegistrarse.setBackground(new java.awt.Color(0, 0, 0));
+        botonRegistrarse.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
+        botonRegistrarse.setForeground(new java.awt.Color(255, 255, 255));
+        botonRegistrarse.setText("Registrarse");
+        panelInterior.add(botonRegistrarse, new org.netbeans.lib.awtextra.AbsoluteConstraints(86, 439, 192, 44));
 
         jLabel1.setFont(new java.awt.Font("Eras Bold ITC", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -77,7 +110,7 @@ public class Loggin extends javax.swing.JFrame {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(46, 46, 46)
                 .addComponent(jLabel2))
-            .addComponent(panelInterior, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panelInterior, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         fondoLayout.setVerticalGroup(
             fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -89,7 +122,7 @@ public class Loggin extends javax.swing.JFrame {
                         .addGap(2, 2, 2)
                         .addComponent(jLabel2)))
                 .addGap(35, 35, 35)
-                .addComponent(panelInterior, javax.swing.GroupLayout.DEFAULT_SIZE, 514, Short.MAX_VALUE))
+                .addComponent(panelInterior, javax.swing.GroupLayout.PREFERRED_SIZE, 514, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -135,9 +168,14 @@ public class Loggin extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Usuario;
     private javax.swing.JButton botonIniciarSesion;
+    private javax.swing.JLabel botonOlvidada;
+    private javax.swing.JButton botonRegistrarse;
     private javax.swing.JPanel fondo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JPanel panelInterior;
     // End of variables declaration//GEN-END:variables
