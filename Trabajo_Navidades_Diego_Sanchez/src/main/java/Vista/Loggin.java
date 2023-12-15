@@ -5,6 +5,7 @@
 package Vista;
 
 import com.formdev.flatlaf.intellijthemes.FlatLightFlatIJTheme;
+import java.awt.Color;
 
 /**
  *
@@ -33,7 +34,7 @@ public class Loggin extends javax.swing.JFrame {
         fondo = new javax.swing.JPanel();
         panelInterior = new javax.swing.JPanel();
         Usuario = new javax.swing.JTextField();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        Contrasena = new javax.swing.JPasswordField();
         botonIniciarSesion = new javax.swing.JButton();
         botonOlvidada = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -52,16 +53,38 @@ public class Loggin extends javax.swing.JFrame {
         panelInterior.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Usuario.setBackground(new java.awt.Color(255, 255, 255));
-        Usuario.setForeground(new java.awt.Color(153, 153, 153));
+        Usuario.setForeground(new java.awt.Color(102, 102, 102));
         Usuario.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         Usuario.setText("email o nombre de usuario");
+        Usuario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                UsuarioMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                UsuarioMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                UsuarioMouseExited(evt);
+            }
+        });
         panelInterior.add(Usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(59, 44, 257, 54));
 
-        jPasswordField1.setBackground(new java.awt.Color(255, 255, 255));
-        jPasswordField1.setForeground(new java.awt.Color(153, 153, 153));
-        jPasswordField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jPasswordField1.setText("jPasswordField1");
-        panelInterior.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(59, 147, 250, 60));
+        Contrasena.setBackground(new java.awt.Color(255, 255, 255));
+        Contrasena.setForeground(new java.awt.Color(102, 102, 102));
+        Contrasena.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        Contrasena.setText(".........");
+        Contrasena.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ContrasenaMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                ContrasenaMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                ContrasenaMouseExited(evt);
+            }
+        });
+        panelInterior.add(Contrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(59, 147, 250, 60));
 
         botonIniciarSesion.setBackground(new java.awt.Color(0, 0, 0));
         botonIniciarSesion.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
@@ -130,6 +153,30 @@ public class Loggin extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void UsuarioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UsuarioMouseEntered
+        Usuario.setForeground(Color.BLACK);
+    }//GEN-LAST:event_UsuarioMouseEntered
+
+    private void UsuarioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UsuarioMouseExited
+        Usuario.setForeground(Color.GRAY);
+    }//GEN-LAST:event_UsuarioMouseExited
+
+    private void ContrasenaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ContrasenaMouseEntered
+        Contrasena.setForeground(Color.BLACK);
+    }//GEN-LAST:event_ContrasenaMouseEntered
+
+    private void ContrasenaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ContrasenaMouseExited
+        Contrasena.setForeground(Color.GRAY);
+    }//GEN-LAST:event_ContrasenaMouseExited
+
+    private void UsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UsuarioMouseClicked
+        Usuario.setText("");
+    }//GEN-LAST:event_UsuarioMouseClicked
+
+    private void ContrasenaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ContrasenaMouseClicked
+       Contrasena.setText("");
+    }//GEN-LAST:event_ContrasenaMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -166,6 +213,7 @@ public class Loggin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPasswordField Contrasena;
     private javax.swing.JTextField Usuario;
     private javax.swing.JButton botonIniciarSesion;
     private javax.swing.JLabel botonOlvidada;
@@ -176,7 +224,6 @@ public class Loggin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JPanel panelInterior;
     // End of variables declaration//GEN-END:variables
 }
