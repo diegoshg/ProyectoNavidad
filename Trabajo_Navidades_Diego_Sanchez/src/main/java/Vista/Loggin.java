@@ -12,7 +12,7 @@ import java.awt.Color;
  * @author Diego Sanchez Gandara
  */
 public class Loggin extends javax.swing.JFrame {
-
+    private Registrarse regis;
     /**
      * Creates new form Loggin
      */
@@ -108,6 +108,11 @@ public class Loggin extends javax.swing.JFrame {
         botonRegistrarse.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
         botonRegistrarse.setForeground(new java.awt.Color(255, 255, 255));
         botonRegistrarse.setText("Registrarse");
+        botonRegistrarse.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonRegistrarseActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelInteriorLayout = new javax.swing.GroupLayout(panelInterior);
         panelInterior.setLayout(panelInteriorLayout);
@@ -217,6 +222,11 @@ public class Loggin extends javax.swing.JFrame {
     private void ContrasenaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ContrasenaMouseClicked
        Contrasena.setText("");
     }//GEN-LAST:event_ContrasenaMouseClicked
+
+    private void botonRegistrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistrarseActionPerformed
+        regis = new Registrarse();
+        regis.setVisible(true);
+    }//GEN-LAST:event_botonRegistrarseActionPerformed
 
     /**
      * @param args the command line arguments
