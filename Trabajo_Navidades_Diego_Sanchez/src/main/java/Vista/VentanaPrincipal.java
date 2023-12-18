@@ -200,6 +200,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         pi.setSize(375,523);
         pi.setLocation(0, 0);
         mostrarPanel(pi);
+        mensajeCambiante.setText("INTRODUCIR");
     }//GEN-LAST:event_botonIntroducirActionPerformed
 
     private void botonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarActionPerformed
@@ -207,6 +208,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         pb.setSize(375,523);
         pb.setLocation(0, 0);
         mostrarPanel(pb);
+        mensajeCambiante.setText("CONSULTAR");
     }//GEN-LAST:event_botonBuscarActionPerformed
 
     private void botonListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonListarActionPerformed
@@ -214,6 +216,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         pl.setSize(375,523);
         pl.setLocation(0, 0);
         mostrarPanel(pl);
+        mensajeCambiante.setText("LISTAR");
     }//GEN-LAST:event_botonListarActionPerformed
 
     private void botonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModificarActionPerformed
@@ -221,6 +224,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         pm.setSize(375,523);
         pm.setLocation(0, 0);
         mostrarPanel(pm);
+        mensajeCambiante.setText("MODIFICAR");
     }//GEN-LAST:event_botonModificarActionPerformed
 
     /**
