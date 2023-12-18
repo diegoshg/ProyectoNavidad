@@ -6,7 +6,7 @@ package Modelo;
 
 /**
  *
- * @author Alumno
+ * @author Diego Sanchez Gandara
  */
 public class Clientes {
     private int id_cliente;

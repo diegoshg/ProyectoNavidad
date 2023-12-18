@@ -14,7 +14,7 @@ import javax.swing.Timer;
 
 /**
  *
- * @author ACER
+ * @author Diego Sanchez Gandara
  */
 public class Principal extends javax.swing.JFrame {
 

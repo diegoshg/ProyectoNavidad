@@ -19,7 +19,7 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author ACER
+ * @author Diego Sanchez Gandara
  */
 public class VentanaPrincipal extends javax.swing.JFrame {
 

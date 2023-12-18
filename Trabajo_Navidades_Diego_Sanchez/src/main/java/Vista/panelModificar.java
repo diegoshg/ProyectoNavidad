@@ -6,7 +6,7 @@ package Vista;
 
 /**
  *
- * @author ACER
+ * @author Diego Sanchez Gandara
  */
 public class panelModificar extends javax.swing.JPanel {
 
