@@ -33,6 +33,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         pi.setSize(375,523);
         pi.setLocation(0, 0);
         mostrarPanel(pi);
+        imagenPerfil.setSvgImage("src/main/resources/img/perfil.svg", 100, 100);
     }
 
     /**
@@ -51,14 +52,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         botonListar = new javax.swing.JButton();
         botonModificar = new javax.swing.JButton();
         panelCambiante = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         mensajeCambiante = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        imagenPerfil = new com.mycompany.flatlaffull.SVGImage();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
         fondo.setBackground(new java.awt.Color(0, 0, 0));
+        fondo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         panelInferior.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -124,6 +126,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             .addComponent(botonListar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
+        fondo.add(panelInferior, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 613, -1, 54));
+
         panelCambiante.setBackground(new java.awt.Color(6, 2, 221));
 
         javax.swing.GroupLayout panelCambianteLayout = new javax.swing.GroupLayout(panelCambiante);
@@ -137,12 +141,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             .addGap(0, 523, Short.MAX_VALUE)
         );
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/perfil.png"))); // NOI18N
-        jLabel1.setToolTipText("Perfil del usuario");
+        fondo.add(panelCambiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, -1, -1));
 
         mensajeCambiante.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
         mensajeCambiante.setForeground(new java.awt.Color(255, 255, 255));
         mensajeCambiante.setText("INTRODUCIR");
+        fondo.add(mensajeCambiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(87, 38, 93, 21));
 
         jButton1.setBackground(new java.awt.Color(255, 51, 0));
         jButton1.setText("CERRAR SESION");
@@ -154,38 +158,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout fondoLayout = new javax.swing.GroupLayout(fondo);
-        fondo.setLayout(fondoLayout);
-        fondoLayout.setHorizontalGroup(
-            fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(fondoLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jLabel1)
-                .addGap(16, 16, 16)
-                .addComponent(mensajeCambiante, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(48, 48, 48)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addComponent(panelCambiante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(panelInferior, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-        fondoLayout.setVerticalGroup(
-            fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(fondoLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addGroup(fondoLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(mensajeCambiante, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(fondoLayout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(10, 10, 10)
-                .addComponent(panelCambiante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(panelInferior, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
+        fondo.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(228, 30, 132, 40));
+        fondo.add(imagenPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 51, 60));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -287,8 +261,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton botonListar;
     private javax.swing.JButton botonModificar;
     private javax.swing.JPanel fondo;
+    private com.mycompany.flatlaffull.SVGImage imagenPerfil;
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel mensajeCambiante;
     private javax.swing.JPanel panelCambiante;
     private javax.swing.JPanel panelInferior;
