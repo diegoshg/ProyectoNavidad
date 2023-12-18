@@ -163,6 +163,7 @@ public class Registrarse extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonvolverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonvolverMouseClicked
