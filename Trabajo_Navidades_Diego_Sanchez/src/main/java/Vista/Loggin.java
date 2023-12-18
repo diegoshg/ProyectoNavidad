@@ -13,6 +13,7 @@ import java.awt.Color;
  */
 public class Loggin extends javax.swing.JFrame {
     private Registrarse regis;
+    private RecuperarContrasena rec;
     /**
      * Creates new form Loggin
      */
@@ -69,6 +70,11 @@ public class Loggin extends javax.swing.JFrame {
         botonOlvidada.setForeground(new java.awt.Color(244, 40, 84));
         botonOlvidada.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         botonOlvidada.setText("Olvidaste tu contraseña ?");
+        botonOlvidada.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                botonOlvidadaMouseClicked(evt);
+            }
+        });
 
         jLabel3.setForeground(new java.awt.Color(244, 40, 84));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -182,6 +188,12 @@ public class Loggin extends javax.swing.JFrame {
         regis.setVisible(true);
         dispose();
     }//GEN-LAST:event_botonRegistrarseActionPerformed
+
+    private void botonOlvidadaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonOlvidadaMouseClicked
+        rec = new RecuperarContrasena();
+        rec.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_botonOlvidadaMouseClicked
 
     /**
      * @param args the command line arguments
