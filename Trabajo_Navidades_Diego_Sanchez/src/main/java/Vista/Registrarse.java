@@ -22,8 +22,7 @@ public class Registrarse extends javax.swing.JFrame {
     public Registrarse() {
         initComponents();
         botonCrearCuenta.putClientProperty( "JButton.buttonType" , "roundRect" );
-        botonVolver.setSvgImage("/img/volver.svg", 50, 50);
-        botonVolver.setIcon(new FlatSVGIcon("/img/volver.svg",50,50));
+        
     }
 
     /**
@@ -44,12 +43,11 @@ public class Registrarse extends javax.swing.JFrame {
         jPasswordField1 = new javax.swing.JPasswordField();
         botonCrearCuenta = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        botonVolver = new com.mycompany.flatlaffull.SVGImage();
+        botonvolver = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         fondo.setBackground(new java.awt.Color(0, 0, 0));
-        fondo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -118,12 +116,40 @@ public class Registrarse extends javax.swing.JFrame {
                 .addContainerGap(47, Short.MAX_VALUE))
         );
 
-        fondo.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 91, 375, 576));
-
         jLabel1.setFont(new java.awt.Font("Eras Bold ITC", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("REGISTRARSE");
-        fondo.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 150, 60));
-        fondo.add(botonVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(293, 29, 50, 33));
+
+        botonvolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/volver.png"))); // NOI18N
+        botonvolver.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                botonvolverMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout fondoLayout = new javax.swing.GroupLayout(fondo);
+        fondo.setLayout(fondoLayout);
+        fondoLayout.setHorizontalGroup(
+            fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(fondoLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(120, 120, 120)
+                .addComponent(botonvolver))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        fondoLayout.setVerticalGroup(
+            fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(fondoLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(fondoLayout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(botonvolver)))
+                .addGap(21, 21, 21)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -138,6 +164,14 @@ public class Registrarse extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void botonvolverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonvolverMouseClicked
+        if (log == null) {
+            log = new Loggin();
+            log.setVisible(true);
+        }
+        dispose();
+    }//GEN-LAST:event_botonvolverMouseClicked
 
     /**
      * @param args the command line arguments
@@ -177,7 +211,7 @@ public class Registrarse extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonCrearCuenta;
-    private com.mycompany.flatlaffull.SVGImage botonVolver;
+    private javax.swing.JLabel botonvolver;
     private javax.swing.JPanel fondo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

@@ -139,10 +139,10 @@ public class Principal extends javax.swing.JFrame {
             
         }
         //para ir a la otra ventana
-       VentanaPrincipal v1 = new VentanaPrincipal();
+       Loggin l = new Loggin();
         //cerrar o esconder antes de abrir principal
         p1.setVisible(false);
-        v1.setVisible(true);
+        l.setVisible(true);
         
         
         //cerrar pantallla de carga
