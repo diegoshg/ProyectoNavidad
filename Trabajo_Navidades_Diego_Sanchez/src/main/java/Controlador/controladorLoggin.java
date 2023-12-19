@@ -21,11 +21,13 @@ public class controladorLoggin {
     
     public boolean verificarCredenciales(String username, String email, String contrasena) {
         boolean credencialesValidas = false;
-
-        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+        Session sesion = sessionFactory.openSession();
+        Transaction tx = sesion.beginTransaction();
+        try{
             // Crear la consulta HQL (Hibernate Query Language)
             String hql = "FROM Usuario WHERE username = :username AND email = :email AND contrasena = :contrasena";
-            Query<Usuarios> query = session.createQuery(hql, Usuarios.class);
+            Query<Usuarios> query = sesion.createQuery(hql, Usuarios.class);
             query.setParameter("username", username);
             query.setParameter("contrasena", contrasena);
             query.setParameter("email", email);

@@ -12,6 +12,8 @@ public class Ventas implements java.io.Serializable {
 
 	public Ventas() {
 	}
+        
+       
 
 	public Ventas(VentasId id, Juegos juegos, Clientes clientes) {
 		this.id = id;

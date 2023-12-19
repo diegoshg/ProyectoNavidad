@@ -5,9 +5,12 @@
 package Vista;
 
 
+import Controlador.controladorLoggin;
 import com.formdev.flatlaf.extras.FlatSVGIcon;
 import com.formdev.flatlaf.intellijthemes.FlatLightFlatIJTheme;
 import com.mycompany.flatlaffull.SVGImage;
+import javax.swing.JOptionPane;
+import model.Usuarios;
 
 /**
  *
@@ -15,6 +18,8 @@ import com.mycompany.flatlaffull.SVGImage;
  */
 public class Registrarse extends javax.swing.JFrame {
     private Loggin log;
+    private Usuarios usu;
+    private controladorLoggin clg = new controladorLoggin();
    
     /**
      * Creates new form Registrarse
@@ -39,10 +44,10 @@ public class Registrarse extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         usuarioNuevo = new javax.swing.JTextField();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        contrasenaNueva = new javax.swing.JPasswordField();
         botonCrearCuenta = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
-        usuarioNuevo1 = new javax.swing.JTextField();
+        emailNuevo = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         botonvolver = new javax.swing.JLabel();
@@ -64,18 +69,23 @@ public class Registrarse extends javax.swing.JFrame {
 
         usuarioNuevo.setBackground(new java.awt.Color(255, 255, 255));
 
-        jPasswordField1.setBackground(new java.awt.Color(255, 255, 255));
+        contrasenaNueva.setBackground(new java.awt.Color(255, 255, 255));
 
         botonCrearCuenta.setBackground(new java.awt.Color(0, 0, 0));
         botonCrearCuenta.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
         botonCrearCuenta.setForeground(new java.awt.Color(255, 255, 255));
         botonCrearCuenta.setText("REGISTRARSE");
+        botonCrearCuenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonCrearCuentaActionPerformed(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Contraseña:");
 
-        usuarioNuevo1.setBackground(new java.awt.Color(255, 255, 255));
+        emailNuevo.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/zelda.png"))); // NOI18N
 
@@ -94,13 +104,13 @@ public class Registrarse extends javax.swing.JFrame {
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(contrasenaNueva, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addComponent(usuarioNuevo1, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(emailNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(160, 160, 160)
                 .addComponent(jLabel3))
@@ -118,11 +128,11 @@ public class Registrarse extends javax.swing.JFrame {
                 .addGap(16, 16, 16)
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
-                .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(contrasenaNueva, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(16, 16, 16)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
-                .addComponent(usuarioNuevo1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(emailNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
                 .addComponent(jLabel3)
                 .addGap(17, 17, 17)
@@ -188,6 +198,22 @@ public class Registrarse extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_botonvolverMouseClicked
 
+    private void botonCrearCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCrearCuentaActionPerformed
+        String user = usuarioNuevo.getText();
+        String cont = contrasenaNueva.getText();
+        String correo = emailNuevo.getText();
+        try {
+            boolean comprueba = clg.verificarCredenciales(user, cont, correo);
+            if (comprueba == true) {
+                JOptionPane.showMessageDialog(rootPane, "El usuario o email ya existe en la base de datos","Error", JOptionPane.ERROR_MESSAGE);
+            }else{
+                clg.introducirUsuario(user, cont, correo);
+            }
+        }catch (ClassCastException e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_botonCrearCuentaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -227,6 +253,8 @@ public class Registrarse extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonCrearCuenta;
     private javax.swing.JLabel botonvolver;
+    private javax.swing.JPasswordField contrasenaNueva;
+    private javax.swing.JTextField emailNuevo;
     private javax.swing.JPanel fondo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -234,8 +262,6 @@ public class Registrarse extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTextField usuarioNuevo;
-    private javax.swing.JTextField usuarioNuevo1;
     // End of variables declaration//GEN-END:variables
 }

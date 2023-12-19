@@ -18,6 +18,14 @@ public class Juegos implements java.io.Serializable {
 
 	public Juegos() {
 	}
+        
+        public Juegos(Usuarios usuarios, String nombreJuego, String plataforma, double precio) {
+            this.usuarios = usuarios;
+            this.nombreJuego = nombreJuego;
+            this.plataforma = plataforma;
+            this.precio = precio;
+            
+	}
 
 	public Juegos(Usuarios usuarios, String nombreJuego, String plataforma, double precio, Set ventases) {
 		this.usuarios = usuarios;

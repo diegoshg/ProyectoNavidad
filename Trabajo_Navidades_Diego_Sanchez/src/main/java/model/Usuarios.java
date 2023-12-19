@@ -12,8 +12,15 @@ public class Usuarios implements java.io.Serializable {
 	private String email;
 	private Juegos juegos;
 	private Clientes clientes;
+        
+        public Usuarios(){
+            
+        }
 
-	public Usuarios() {
+	public Usuarios(String username, String contrasena, String email) {
+            this.username = username;
+            this.contrasena = contrasena;
+            this.email = email;
 	}
 
 	public Usuarios(String username, String contrasena, String email, Juegos juegos, Clientes clientes) {
