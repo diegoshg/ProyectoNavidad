@@ -33,7 +33,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         pi.setSize(375,523);
         pi.setLocation(0, 0);
         mostrarPanel(pi);
-        imagenPerfil.setSvgImage("src/main/resources/img/perfil.svg", 100, 100);
+        
     }
 
     /**
@@ -54,7 +54,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         panelCambiante = new javax.swing.JPanel();
         mensajeCambiante = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        imagenPerfil = new com.mycompany.flatlaffull.SVGImage();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -159,7 +159,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
         fondo.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(228, 30, 132, 40));
-        fondo.add(imagenPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 51, 60));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/perfil.png"))); // NOI18N
+        fondo.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 51, 60));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -261,8 +263,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton botonListar;
     private javax.swing.JButton botonModificar;
     private javax.swing.JPanel fondo;
-    private com.mycompany.flatlaffull.SVGImage imagenPerfil;
     private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel mensajeCambiante;
     private javax.swing.JPanel panelCambiante;
     private javax.swing.JPanel panelInferior;
