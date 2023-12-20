@@ -4,12 +4,16 @@
  */
 package Vista;
 
+import Controlador.ControladorIncluirVenta;
+import java.util.Date;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Diego Sanchez Gandara
  */
 public class panelIntroducir extends javax.swing.JPanel {
-
+    private Controlador.ControladorIncluirVenta civ = new ControladorIncluirVenta();
     /**
      * Creates new form panelIntroducir
      */
@@ -65,6 +69,11 @@ public class panelIntroducir extends javax.swing.JPanel {
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("INTRODUCIR");
         jButton1.setToolTipText("meter nueva venta");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -130,6 +139,32 @@ public class panelIntroducir extends javax.swing.JPanel {
                     .addComponent(jLabel5)))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        String titulo = nombreJuego.getText();
+        String plat = plataforma.getText();
+        double perc = Double.parseDouble(precio.getText());
+        String client = cliente.getText();
+        boolean com = civ.comprobarRepetidos(titulo, plat, perc, client);
+        try {
+            if (com) {
+                JOptionPane.showMessageDialog(null, "La venta ya esta registrada", "Error", JOptionPane.INFORMATION_MESSAGE);
+                nombreJuego.setText("");
+                plataforma.setText("");
+                precio.setText("");
+                cliente.setText("");
+            }else{
+                civ.introducirUsuario(titulo, plat, perc, client);
+               // civ.registarVenta(perc, );
+                JOptionPane.showMessageDialog(null, "Usuario Creado correctamente");
+                nombreJuego.setText("");
+                plataforma.setText("");
+                precio.setText("");
+                cliente.setText("");
+            }
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

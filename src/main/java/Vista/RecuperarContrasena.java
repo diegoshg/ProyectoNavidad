@@ -173,7 +173,13 @@ public class RecuperarContrasena extends javax.swing.JFrame {
             } catch (MessagingException ex) {
                 Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
             }
+            JOptionPane.showMessageDialog(rootPane, "El correo se ha enviado correctamente", "Envio", JOptionPane.INFORMATION_MESSAGE);
             ce.actualizarContrasena(mail, nueva);
+            dispose();
+            if (log == null) {
+                log = new Loggin();
+                log.setVisible(true);
+            }
         } else {
             JOptionPane.showMessageDialog(rootPane, "No existe el correo en la base de datos");
         }
