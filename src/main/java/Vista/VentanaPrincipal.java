@@ -22,7 +22,7 @@ import javax.swing.JPanel;
  * @author Diego Sanchez Gandara
  */
 public class VentanaPrincipal extends javax.swing.JFrame {
-
+    private Loggin l1;
     /**
      * Creates new form Introducir
      */
@@ -53,7 +53,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         botonModificar = new javax.swing.JButton();
         panelCambiante = new javax.swing.JPanel();
         mensajeCambiante = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        botonCerrarSesion = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -148,17 +148,17 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         mensajeCambiante.setText("INTRODUCIR");
         fondo.add(mensajeCambiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(87, 38, 93, 21));
 
-        jButton1.setBackground(new java.awt.Color(255, 51, 0));
-        jButton1.setText("CERRAR SESION");
-        jButton1.setToolTipText("boton para cerrar sesion");
-        jButton1.setBorder(null);
-        jButton1.setBorderPainted(false);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        botonCerrarSesion.setBackground(new java.awt.Color(255, 51, 0));
+        botonCerrarSesion.setText("CERRAR SESION");
+        botonCerrarSesion.setToolTipText("boton para cerrar sesion");
+        botonCerrarSesion.setBorder(null);
+        botonCerrarSesion.setBorderPainted(false);
+        botonCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                botonCerrarSesionActionPerformed(evt);
             }
         });
-        fondo.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(228, 30, 132, 40));
+        fondo.add(botonCerrarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(228, 30, 132, 40));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/perfil.png"))); // NOI18N
         fondo.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 51, 60));
@@ -210,9 +210,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         mensajeCambiante.setText("MODIFICAR");
     }//GEN-LAST:event_botonModificarActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void botonCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCerrarSesionActionPerformed
         dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+        if (l1 == null) {
+            l1 = new Loggin();
+            l1.setVisible(true);
+        }
+    }//GEN-LAST:event_botonCerrarSesionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -259,11 +263,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonBuscar;
+    private javax.swing.JButton botonCerrarSesion;
     private javax.swing.JButton botonIntroducir;
     private javax.swing.JButton botonListar;
     private javax.swing.JButton botonModificar;
     private javax.swing.JPanel fondo;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel mensajeCambiante;
     private javax.swing.JPanel panelCambiante;
