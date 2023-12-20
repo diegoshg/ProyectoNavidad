@@ -149,33 +149,37 @@ public class RecuperarContrasena extends javax.swing.JFrame {
         boolean existe = ce.verificarEmail(mail);
 
         if (existe) {
-        String nueva = ce.generarContrasena(5, 10);
-        final String fromemail = "diego.sangan@educa.jcyl.es";
-        final String password = "diego0612";
-        final String toemail = mail;
-        System.out.println("SSLEmail Start");
-        Properties props = new Properties();
-    props.put("mail.smtp.host", "smtp-mail.outlook.com");
-        props.put("mail.smtp.port", "587");
-        props.put("mail.smtp.auth", "true");
-        props.put("mail.smtp.starttls.enable", "true");
+            String nueva = ce.generarContrasena(5, 10);
+            final String fromemail = "diego.sangan@educa.jcyl.es";
+            final String password = "diego0612";
+            final String toemail = mail;
+            System.out.println("SSLEmail Start");
+            Properties props = new Properties();
+            props.put("mail.smtp.host", "smtp-mail.outlook.com");
+            props.put("mail.smtp.port", "587");
+            props.put("mail.smtp.auth", "true");
+            props.put("mail.smtp.starttls.enable", "true");
 
-        Authenticator auth = new Authenticator() {
-          protected PasswordAuthentication getPasswordAuthentication() {
-            return new PasswordAuthentication(fromemail, password);
-          }
-        };
+            Authenticator auth = new Authenticator() {
+              protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(fromemail, password);
+              }
+            };
 
-        Session session = Session.getDefaultInstance(props, auth);
-        System.out.println("Session created");
-        try {
-            EmailUtil.sendEmail(session, toemail, "SSLEmail Testing Subject", nueva);
-        } catch (MessagingException ex) {
-            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
-        }
+            Session session = Session.getDefaultInstance(props, auth);
+            System.out.println("Session created");
+            try {
+                EmailUtil.sendEmail(session, toemail, "SSLEmail Testing Subject", nueva);
+            } catch (MessagingException ex) {
+                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            ce.actualizarContrasena(mail, nueva);
         } else {
             JOptionPane.showMessageDialog(rootPane, "No existe el correo en la base de datos");
         }
+        
+        
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

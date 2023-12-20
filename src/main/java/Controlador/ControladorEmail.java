@@ -70,37 +70,46 @@ public class ControladorEmail {
    }
    
    
-   public void actualizarContrasena(String contrasena){
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        // Comienza una transacción
+   public void actualizarContrasena(String email, String contrasena){
+       Session session = HibernateUtil.getSessionFactory().openSession();
+    // Comienza una transacción
         Transaction transaction = null;
-        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+
         try {
-            String hql = "FROM Usuarios WHERE contrasena = :contrasena";
+            // Comienza la transacción
+            transaction = session.beginTransaction();
+
+            // Busca al usuario por el nombre de usuario
+            String hql = "FROM Usuarios WHERE email = :email";
             Query<Usuarios> query = session.createQuery(hql, Usuarios.class);
-            query.setParameter("contrasena", contrasena);
+            query.setParameter("email", email);
 
             // Obtener el resultado de la consulta
             Usuarios usuario = query.uniqueResult();
-           // Comienza la transacción
-           transaction = session.beginTransaction();
-           // Encripta la contraseña antes de almacenarla
-           Usuarios user = new Usuarios();
-           String hashedPassword = BCrypt.hashpw(contrasena, BCrypt.gensalt());
-           user.setContrasena(hashedPassword);
-           // Guarda el usuario en la base de datos
-           session.save(user);
-           // Confirma la transacción
-           transaction.commit();
-       } catch (Exception e) {
-           // Si hay algún error, realiza un rollback de la transacción
-           if (transaction != null) {
-               transaction.rollback();
-           }
-           e.printStackTrace(); // Trata el error según tus necesidades
-       } finally {
-           // Cierra la sesión de Hibernate
-           session.close();
-       }
-   }
+
+            // Verifica si el usuario existe
+            if (usuario != null) {
+                // Encripta la nueva contraseña antes de almacenarla
+                String hashedPassword = BCrypt.hashpw(contrasena, BCrypt.gensalt());
+                usuario.setContrasena(hashedPassword);
+
+                // Actualiza el usuario en la base de datos
+                session.update(usuario);
+
+                // Confirma la transacción
+                transaction.commit();
+            } else {
+                System.out.println("Usuario no encontrado.");
+            }
+        } catch (Exception e) {
+            // Si hay algún error, realiza un rollback de la transacción
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace(); // Trata el error según tus necesidades
+        } finally {
+            // Cierra la sesión de Hibernate
+            session.close();
+        }
+    }
 }
