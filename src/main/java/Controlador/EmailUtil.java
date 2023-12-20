@@ -12,7 +12,7 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 /**
  *
- * @author ACER
+ * @author Diego Sanchez Gandara
  */
 public class EmailUtil {
     public static void sendEmail(Session session, String toEmail, String subject, String body) throws MessagingException {

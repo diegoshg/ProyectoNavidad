@@ -14,7 +14,7 @@ import org.mindrot.jbcrypt.BCrypt;
 
 /**
  *
- * @author Alumno
+ * @author Diego Sanchez Gandara
  */
 public class controladorLoggin {
     

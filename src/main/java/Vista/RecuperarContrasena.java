@@ -149,7 +149,8 @@ public class RecuperarContrasena extends javax.swing.JFrame {
         boolean existe = ce.verificarEmail(mail);
 
         if (existe) {
-            final String fromemail = "diego.sangan@educa.jcyl.es";
+        String nueva = ce.generarContrasena(5, 10);
+        final String fromemail = "diego.sangan@educa.jcyl.es";
         final String password = "diego0612";
         final String toemail = mail;
         System.out.println("SSLEmail Start");
@@ -168,7 +169,7 @@ public class RecuperarContrasena extends javax.swing.JFrame {
         Session session = Session.getDefaultInstance(props, auth);
         System.out.println("Session created");
         try {
-            EmailUtil.sendEmail(session, toemail, "SSLEmail Testing Subject", "SSLEmail Testing Body");
+            EmailUtil.sendEmail(session, toemail, "SSLEmail Testing Subject", nueva);
         } catch (MessagingException ex) {
             Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
         }

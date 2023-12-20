@@ -13,7 +13,7 @@ import org.mindrot.jbcrypt.BCrypt;
 
 /**
  *
- * @author ACER
+ * @author Diego Sanchez Gandara
  */
 public class ControladorCrearCuenta {
     

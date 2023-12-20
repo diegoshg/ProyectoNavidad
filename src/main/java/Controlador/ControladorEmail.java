@@ -6,6 +6,7 @@ package Controlador;
 
 import java.net.Authenticator;
 import java.net.PasswordAuthentication;
+import java.security.SecureRandom;
 import java.util.Properties;
 import javax.mail.MessagingException;
 import javax.swing.JOptionPane;
@@ -14,10 +15,11 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
+import org.mindrot.jbcrypt.BCrypt;
 
 /**
  *
- * @author ACER
+ * @author Diego Sanchez Gandara
  */
 public class ControladorEmail {
    public boolean verificarEmail(String email) {
@@ -48,4 +50,57 @@ public class ControladorEmail {
 
         return emailExiste;
     }
+   
+   
+   public String generarContrasena(int longitudMin, int longitudMax){
+        String CARACTERES = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()-_=+";
+        longitudMin = Math.max(1, longitudMin);
+    // Método para generar una contraseña aleatoria
+        int longitud = longitudMin + new SecureRandom().nextInt(longitudMax - longitudMin + 1);
+
+        StringBuilder contraseñaGenerada = new StringBuilder();
+        SecureRandom aleatorio = new SecureRandom();
+
+        for (int i = 0; i < longitud; i++) {
+            int indice = aleatorio.nextInt(CARACTERES.length());
+            contraseñaGenerada.append(CARACTERES.charAt(indice));
+        }
+
+        return contraseñaGenerada.toString();
+   }
+   
+   
+   public void actualizarContrasena(String contrasena){
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        // Comienza una transacción
+        Transaction transaction = null;
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+        try {
+            String hql = "FROM Usuarios WHERE contrasena = :contrasena";
+            Query<Usuarios> query = session.createQuery(hql, Usuarios.class);
+            query.setParameter("contrasena", contrasena);
+
+            // Obtener el resultado de la consulta
+            Usuarios usuario = query.uniqueResult();
+           // Comienza la transacción
+           transaction = session.beginTransaction();
+           // Encripta la contraseña antes de almacenarla
+           Usuarios user = new Usuarios();
+           String hashedPassword = BCrypt.hashpw(contrasena, BCrypt.gensalt());
+           user.setContrasena(hashedPassword);
+           // Guarda el usuario en la base de datos
+           session.save(user);
+           // Confirma la transacción
+           transaction.commit();
+       } catch (Exception e) {
+           // Si hay algún error, realiza un rollback de la transacción
+           if (transaction != null) {
+               transaction.rollback();
+           }
+           e.printStackTrace(); // Trata el error según tus necesidades
+       } finally {
+           // Cierra la sesión de Hibernate
+           session.close();
+       }
+   }
 }
