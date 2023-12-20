@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 18 dic 2023 18:29:18 by Hibernate Tools 6.3.1.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class catalog="ad_videojuegos" name="model.Usuarios" optimistic-lock="none" table="usuarios">
+        <id name="id" type="java.lang.Integer">
+            <column name="id"/>
+            <generator class="identity"/>
+        </id>
+        <property name="username" type="string">
+            <column length="40" name="username" not-null="true"/>
+        </property>
+        <property name="contrasena" type="string">
+            <column length="50" name="contrasena" not-null="true"/>
+        </property>
+        <property name="email" type="string">
+            <column length="80" name="email" not-null="true"/>
+        </property>
+        <one-to-one class="model.Juegos" name="juegos"/>
+        <one-to-one class="model.Clientes" name="clientes"/>
+    </class>
+</hibernate-mapping>
