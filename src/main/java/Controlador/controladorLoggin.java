@@ -18,47 +18,52 @@ import org.mindrot.jbcrypt.BCrypt;
  */
 public class controladorLoggin {
     
-    
+    //metodo para obtener el username del usuario
       private Usuarios obtenerUsuarioPorUsername(String username) {
+          //crea la sesion
         SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         Session sesion = sessionFactory.openSession();
 
         try {
+            //pide el username
             String hql = "FROM Usuarios WHERE username = :username";
             Query<Usuarios> query = sesion.createQuery(hql, Usuarios.class);
             query.setParameter("username", username);
-
+            //devuelve el resultado
             return query.uniqueResult();
         } catch (Exception e) {
             e.printStackTrace();
             return null;
         } finally {
+            //cierra la sesion
             sesion.close();
         }
     }
     
     // Método para obtener la contraseña de un usuario específico
     public String obtenerContrasenaDeUsuario(String username) {
+        //crea la sesion
         SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         Session sesion = sessionFactory.openSession();
 
         try {
+            //pide la contraseña
             String hql = "SELECT u.contrasena FROM Usuarios u WHERE u.username = :username";
             Query<String> query = sesion.createQuery(hql, String.class);
             query.setParameter("username", username);
-
+            //devuelve el resultado
             return query.uniqueResult();
         } catch (Exception e) {
             e.printStackTrace();
             return null;
         } finally {
+            //cierra la sesion
             sesion.close();
         }
 }
     
-    // Método para verificar si la contraseña coincide (puedes usar BCrypt)
+    // Método para verificar si la contraseña coincide 
     public boolean verificarContrasena(String contrasenaInput, String contrasenaAlmacenada) {
-        // Implementa aquí la lógica para verificar la contraseña (puedes usar BCrypt)
-        return BCrypt.checkpw(contrasenaInput, contrasenaAlmacenada); // Esto es solo un ejemplo, debes utilizar una función de verificación segura
+        return BCrypt.checkpw(contrasenaInput, contrasenaAlmacenada);
     }
 }

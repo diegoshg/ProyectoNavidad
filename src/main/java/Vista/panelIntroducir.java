@@ -5,6 +5,7 @@
 package Vista;
 
 import Controlador.ControladorIncluirVenta;
+import java.time.LocalDate;
 import java.util.Date;
 import javax.swing.JOptionPane;
 
@@ -13,20 +14,24 @@ import javax.swing.JOptionPane;
  * @author Diego Sanchez Gandara
  */
 public class panelIntroducir extends javax.swing.JPanel {
+    //Llamamos al controlador de la clase
     private Controlador.ControladorIncluirVenta civ = new ControladorIncluirVenta();
     /**
      * Creates new form panelIntroducir
      */
     public panelIntroducir() {
         initComponents();
+        //estilos de fuente
         jLabel1.putClientProperty("FlatLaf.style", "font: $h2.font");
         jLabel2.putClientProperty("FlatLaf.style", "font: $h2.font");
         jLabel3.putClientProperty("FlatLaf.style", "font: $h2.font");
         jLabel4.putClientProperty("FlatLaf.style", "font: $h2.font");
+        //redondeos
         nombreJuego.putClientProperty( "JComponent.roundRect", true );
         plataforma.putClientProperty( "JComponent.roundRect", true );
         precio.putClientProperty( "JComponent.roundRect", true );
         cliente.putClientProperty( "JComponent.roundRect", true );
+        //placeHolder
         nombreJuego.putClientProperty( "JTextField.placeholderText" , "ingrese el nombre del juego" );
         plataforma.putClientProperty( "JTextField.placeholderText" , "ingrese la plataforma");
         precio.putClientProperty( "JTextField.placeholderText" , "ingrese el precio" );
@@ -51,7 +56,7 @@ public class panelIntroducir extends javax.swing.JPanel {
         precio = new javax.swing.JTextField();
         cliente = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        botonIntroducir = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(6, 2, 221));
 
@@ -65,13 +70,13 @@ public class panelIntroducir extends javax.swing.JPanel {
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/paimon 1.png"))); // NOI18N
 
-        jButton1.setBackground(new java.awt.Color(0, 0, 0));
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("INTRODUCIR");
-        jButton1.setToolTipText("meter nueva venta");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        botonIntroducir.setBackground(new java.awt.Color(0, 0, 0));
+        botonIntroducir.setForeground(new java.awt.Color(255, 255, 255));
+        botonIntroducir.setText("INTRODUCIR");
+        botonIntroducir.setToolTipText("meter nueva venta");
+        botonIntroducir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                botonIntroducirActionPerformed(evt);
             }
         });
 
@@ -106,7 +111,7 @@ public class panelIntroducir extends javax.swing.JPanel {
                 .addComponent(cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(118, 118, 118)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(botonIntroducir, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29)
                 .addComponent(jLabel5))
         );
@@ -135,41 +140,54 @@ public class panelIntroducir extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(59, 59, 59)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(botonIntroducir, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel5)))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    //boton para introducir una nueva venta
+    private void botonIntroducirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonIntroducirActionPerformed
+        //pasamos los datos a varibale
         String titulo = nombreJuego.getText();
         String plat = plataforma.getText();
         double perc = Double.parseDouble(precio.getText());
         String client = cliente.getText();
+        LocalDate fecha = LocalDate.now();
+
+        // Convertir LocalDate a java.sql.Date
+        Date date = java.sql.Date.valueOf(fecha);
+        
+        //comprobamos si existe ya una venta similar
         boolean com = civ.comprobarRepetidos(titulo, plat, perc, client);
         try {
+            //si existe avisamos al usuario
             if (com) {
-                JOptionPane.showMessageDialog(null, "La venta ya esta registrada", "Error", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "La venta ya está registrada", "Error", JOptionPane.INFORMATION_MESSAGE);
                 nombreJuego.setText("");
                 plataforma.setText("");
                 precio.setText("");
                 cliente.setText("");
-            }else{
-                civ.introducirUsuario(titulo, plat, perc, client);
-               // civ.registarVenta(perc, );
-                JOptionPane.showMessageDialog(null, "Usuario Creado correctamente");
+            //sino introducimos los datos en sus respectivas tablas
+            } else {
+                civ.introducirJuego(titulo, plat, perc);
+                civ.introducirCliente(client);
+                //civ.registrarVenta(perc, date);
+                JOptionPane.showMessageDialog(null, "Venta registrada correctamente");
+                //limpiamos los campos tras introducir
                 nombreJuego.setText("");
                 plataforma.setText("");
                 precio.setText("");
                 cliente.setText("");
             }
-        } catch (Exception e) {
+            //manejo de excepciones
+        } catch (ClassCastException e) {
+           e.printStackTrace();
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_botonIntroducirActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botonIntroducir;
     private javax.swing.JTextField cliente;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

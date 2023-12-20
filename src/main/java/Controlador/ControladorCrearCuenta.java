@@ -17,39 +17,43 @@ import org.mindrot.jbcrypt.BCrypt;
  */
 public class ControladorCrearCuenta {
     
-     public boolean verificarCredenciales(String username, String email, String contrasena) {
+    //metodo para verificar las credenciales, se le pasa el nombre de usuario, email y contraseña
+    public boolean verificarCredenciales(String username, String email, String contrasena) {
         boolean credencialesValidas = false;
+        //iniciamos la sesion y la transacion
         SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         Session sesion = sessionFactory.openSession();
         Transaction tx = sesion.beginTransaction();
 
         try {
-            // Crear la consulta HQL
+            // Creamos la consulta para recoger los datos
             String hql = "FROM Usuarios WHERE username = :username AND email = :email AND contrasena = :contrasena";
             Query<Usuarios> query = sesion.createQuery(hql, Usuarios.class);
+            //le pasamos los parametros a la consulta
             query.setParameter("username", username);
             query.setParameter("email", email);
             query.setParameter("contrasena", contrasena);
 
-            // Obtener el resultado de la consulta
+            // Obtenemos el resultado de la consulta
             Usuarios usuario = query.uniqueResult();
 
-            // Verificar si se encontró un usuario con las credenciales proporcionadas
+            // Verificamos su el resultado esta vacio
             if (usuario != null) {
                 credencialesValidas = true;
             }
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
+            //guardamos y cerramos la sesion
             tx.commit();
             sesion.close();
         }
-
+        //retornamos el resultado
         return credencialesValidas;
     }
     
 
-    
+    //metodo para introducir usuarios, pasamos los mismos datos
     public void introducirUsuario(String username, String password, String email) {
         // Obtén la sesión de Hibernate
         Session session = HibernateUtil.getSessionFactory().openSession();
@@ -58,17 +62,17 @@ public class ControladorCrearCuenta {
         Transaction transaction = null;
 
         try {
-            // Comienza la transacción
+            
             transaction = session.beginTransaction();
 
-            // Crea un nuevo usuario y establece sus propiedades
+            // Crea un nuevo usuario y le pasamos los datos
             Usuarios user = new Usuarios();
             user.setUsername(username);
             
-            // Encripta la contraseña antes de almacenarla
+            // Encriptamos la contraseña y se la pasamos a la clase
             String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
             user.setContrasena(hashedPassword);
-
+            //pasamos el email
             user.setEmail(email);
 
             // Guarda el usuario en la base de datos
@@ -81,7 +85,7 @@ public class ControladorCrearCuenta {
             if (transaction != null) {
                 transaction.rollback();
             }
-            e.printStackTrace(); // Trata el error según tus necesidades
+            e.printStackTrace();
         } finally {
             // Cierra la sesión de Hibernate
             session.close();

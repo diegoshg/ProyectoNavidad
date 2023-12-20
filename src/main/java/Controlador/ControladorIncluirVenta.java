@@ -4,6 +4,7 @@
  */
 package Controlador;
 
+import java.time.LocalDate;
 import java.util.Date;
 import model.Clientes;
 import model.Juegos;
@@ -60,7 +61,7 @@ public class ControladorIncluirVenta {
     
     
     
-    public void introducirUsuario(String nombre_juego, String plataforma, double precio, String mombre_cliente) {
+    public void introducirJuego(String nombre_juego, String plataforma, double precio) {
         // Obtén la sesión de Hibernate
         Session session = HibernateUtil.getSessionFactory().openSession();
 
@@ -77,11 +78,38 @@ public class ControladorIncluirVenta {
             j.setPlataforma(plataforma);
             j.setPrecio(precio);
             
-            Clientes c = new Clientes();
-            c.setNombreCliente(mombre_cliente);
-
+           
             // Guarda el usuario en la base de datos
             session.save(j);
+          
+
+            // Confirma la transacción
+            transaction.commit();
+        } catch (Exception e) {
+            // Si hay algún error, realiza un rollback de la transacción
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace(); // Trata el error según tus necesidades
+        } finally {
+            // Cierra la sesión de Hibernate
+            session.close();
+        }
+    }
+    
+    
+    public void introducirCliente(String mombre_cliente) {
+        // Obtén la sesión de Hibernate
+        Session session = HibernateUtil.getSessionFactory().openSession();
+
+        // Comienza una transacción
+        Transaction transaction = null;
+
+        try {
+            // Comienza la transacción
+            transaction = session.beginTransaction(); 
+            Clientes c = new Clientes();
+            c.setNombreCliente(mombre_cliente);
             session.save(c);
 
             // Confirma la transacción
@@ -112,7 +140,7 @@ public class ControladorIncluirVenta {
             // Crea un nuevo usuario y establece sus propiedades
             VentasId vi = new VentasId();
             vi.setPrecioVenta(precio_venta);
-            vi.setFechaVenta((java.sql.Date) fecha_venta);
+            vi.setFechaVenta((java.sql.Date)fecha_venta);
             // Guarda el usuario en la base de datos
             session.save(vi);
             // Confirma la transacción

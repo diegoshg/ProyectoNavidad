@@ -18,6 +18,7 @@ import model.Usuarios;
  * @author Diego Sanchez Gandara
  */
 public class Registrarse extends javax.swing.JFrame {
+    //llamamos a las clases necesarias y al controlador
     private Loggin log;
     private Usuarios usu;
     private ControladorCrearCuenta clg = new ControladorCrearCuenta();
@@ -27,6 +28,7 @@ public class Registrarse extends javax.swing.JFrame {
      */
     public Registrarse() {
         initComponents();
+        //redondeo de boton
         botonCrearCuenta.putClientProperty( "JButton.buttonType" , "roundRect" );
         
     }
@@ -181,8 +183,9 @@ public class Registrarse extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+    //metodo para volver al loggin
     private void botonvolverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonvolverMouseClicked
+        //si el loggin se ha cerrado crea uno nuevo y cierra esta ventana
         if (log == null) {
             log = new Loggin();
             log.setVisible(true);
@@ -190,20 +193,26 @@ public class Registrarse extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_botonvolverMouseClicked
 
+    //boton para crear cuenta
     private void botonCrearCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCrearCuentaActionPerformed
+        //pasamos los datos a variable
         String user = usuarioNuevo.getText();
         String cont = contrasenaNueva.getText();
         String correo = emailNuevo.getText();
+        //si los campos estan vacios se indica y se piden
         if (user.isEmpty() || cont.isEmpty() || correo.isEmpty()) {
             JOptionPane.showMessageDialog(rootPane, "Introduzca todos los campos");
         }else{
             try {
+                //comprobamos que las credenciales son correctas
             boolean comprueba = clg.verificarCredenciales(user, cont, correo);
+                //si el usuario ya existe nos indice que no puede crearlo nuevamente
                 if (comprueba == true) {
                     JOptionPane.showMessageDialog(rootPane, "El usuario o email ya existe en la base de datos","Error", JOptionPane.ERROR_MESSAGE);
                     usuarioNuevo.setText("");
                     contrasenaNueva.setText("");
                     emailNuevo.setText("");
+                //sino crea uno nuevo, lo introduce en la base de datos y limpia los campos
                 }else{
                     clg.introducirUsuario(user, cont, correo);
                     JOptionPane.showMessageDialog(rootPane, "Usuario Creado correctamente");
@@ -211,6 +220,7 @@ public class Registrarse extends javax.swing.JFrame {
                     contrasenaNueva.setText("");
                     emailNuevo.setText("");
                 }
+            //manejo de excepciones
             }catch (ClassCastException e) {
                 e.printStackTrace();
             }

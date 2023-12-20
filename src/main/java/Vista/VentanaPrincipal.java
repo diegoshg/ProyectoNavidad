@@ -22,13 +22,16 @@ import javax.swing.JPanel;
  * @author Diego Sanchez Gandara
  */
 public class VentanaPrincipal extends javax.swing.JFrame {
+    //llamamos al loggin
     private Loggin l1;
     /**
      * Creates new form Introducir
      */
     public VentanaPrincipal() {
         initComponents();
+        //estilos de texto
         mensajeCambiante.putClientProperty("FlatLaf.style", "font: $h3.font");
+        //llamamos al primer panel para que se muestre al ejecutar la aplicacion
         panelIntroducir pi = new panelIntroducir();
         pi.setSize(375,523);
         pi.setLocation(0, 0);
@@ -177,7 +180,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+    //boton para abrir el panel de introducir
     private void botonIntroducirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonIntroducirActionPerformed
         panelIntroducir pi = new panelIntroducir();
         pi.setSize(375,523);
@@ -185,7 +188,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         mostrarPanel(pi);
         mensajeCambiante.setText("INTRODUCIR");
     }//GEN-LAST:event_botonIntroducirActionPerformed
-
+    //boton para abrir el panel de buscar
     private void botonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarActionPerformed
         panelBuscar pb = new panelBuscar();
         pb.setSize(375,523);
@@ -193,7 +196,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         mostrarPanel(pb);
         mensajeCambiante.setText("CONSULTAR");
     }//GEN-LAST:event_botonBuscarActionPerformed
-
+    //boton para abrir el panel de listar
     private void botonListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonListarActionPerformed
         panelListar pl = new panelListar();
         pl.setSize(375,523);
@@ -201,7 +204,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         mostrarPanel(pl);
         mensajeCambiante.setText("LISTAR");
     }//GEN-LAST:event_botonListarActionPerformed
-
+    //boton para abrir el panel de modificar
     private void botonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModificarActionPerformed
         panelModificar pm = new panelModificar();
         pm.setSize(375,523);
@@ -209,7 +212,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         mostrarPanel(pm);
         mensajeCambiante.setText("MODIFICAR");
     }//GEN-LAST:event_botonModificarActionPerformed
-
+    //boton para cerrar la sesion, sirve para volver a la pantalla del loggin
     private void botonCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCerrarSesionActionPerformed
         dispose();
         if (l1 == null) {
