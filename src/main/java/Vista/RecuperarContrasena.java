@@ -135,7 +135,7 @@ public class RecuperarContrasena extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+    //boton para volver al loggin
     private void botonVolverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonVolverMouseClicked
         if (log == null) {
             log = new Loggin();
@@ -143,7 +143,7 @@ public class RecuperarContrasena extends javax.swing.JFrame {
         }
         dispose();
     }//GEN-LAST:event_botonVolverMouseClicked
-
+    //boton que envia un email con una contraseña aleatoria al correo que se escriba, primero comprueba que existe en la base de datos
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String mail = emailRec.getText();
         boolean existe = ce.verificarEmail(mail);

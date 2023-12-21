@@ -9,6 +9,7 @@ import java.sql.Date;
 import model.Clientes;
 import model.Juegos;
 import model.Usuarios;
+import model.Ventas;
 import model.VentasId;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -111,7 +112,8 @@ public class ControladorIncluirVenta {
             j.setNombreJuego(nombre_juego);
             j.setPlataforma(plataforma);
             j.setPrecio(precio);
-            
+            Ventas v = new Ventas();
+            v.setJuegos(j);
            
             // Guarda el usuario en la base de datos
             session.save(j);
@@ -144,6 +146,9 @@ public class ControladorIncluirVenta {
             transaction = session.beginTransaction(); 
             Clientes c = new Clientes();
             c.setNombreCliente(mombre_cliente);
+            
+            Ventas v = new Ventas();
+            v.setClientes(c);
             session.save(c);
 
             // Confirma la transacción
@@ -161,26 +166,31 @@ public class ControladorIncluirVenta {
     }
     
     
-    /*public void registarVenta(double precio_venta, Date fecha_venta){
-      
-    }*/
-
+   
     public void registrarVenta(double precio_venta, Date fecha_venta) {
-          Session session = HibernateUtil.getSessionFactory().openSession();
+         Session session = HibernateUtil.getSessionFactory().openSession();
 
-        // Comienza una transacción
+    // Comienza una transacción
         Transaction transaction = null;
 
         try {
             // Comienza la transacción
             transaction = session.beginTransaction();
 
-            // Crea un nuevo usuario y establece sus propiedades
-            VentasId vi = new VentasId();
-            vi.setPrecioVenta(precio_venta);
-            vi.setFechaVenta((java.sql.Date)fecha_venta);
-            // Guarda el usuario en la base de datos
-            session.save(vi);
+            // Crea una instancia de Ventas
+            Ventas venta = new Ventas();
+
+            // Crea una instancia de VentasId y establece sus propiedades
+            VentasId ventasId = new VentasId();
+            ventasId.setPrecioVenta(precio_venta);
+            ventasId.setFechaVenta((java.sql.Date) fecha_venta);
+
+            // Establece la clave primaria compuesta en la entidad Ventas
+            venta.setId(ventasId);
+
+            // Guarda la entidad Ventas en la base de datos
+            session.save(venta);
+
             // Confirma la transacción
             transaction.commit();
         } catch (Exception e) {
@@ -188,7 +198,7 @@ public class ControladorIncluirVenta {
             if (transaction != null) {
                 transaction.rollback();
             }
-            e.printStackTrace(); // Trata el error según tus necesidades
+            e.printStackTrace(); 
         } finally {
             // Cierra la sesión de Hibernate
             session.close();

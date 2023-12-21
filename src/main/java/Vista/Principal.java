@@ -123,7 +123,7 @@ public class Principal extends javax.swing.JFrame {
         Principal p1 =new Principal();
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                //cambiadopor mi
+                
                 p1.setVisible(true);
             }
         });

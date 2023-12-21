@@ -168,7 +168,7 @@ public class panelIntroducir extends javax.swing.JPanel {
                 plataforma.setText("");
                 precio.setText("");
                 cliente.setText("");
-            //sino introducimos los datos en sus respectivas tablas
+            //sino introducimos los datos en sus respectivas tablas, he conseguido introducir el juego y el cliente pero no la venta.
             } else {
                 civ.introducirJuego(titulo, plat, perc);
                 civ.introducirCliente(client);
