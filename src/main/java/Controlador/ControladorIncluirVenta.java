@@ -5,7 +5,7 @@
 package Controlador;
 
 import java.time.LocalDate;
-import java.util.Date;
+import java.sql.Date;
 import model.Clientes;
 import model.Juegos;
 import model.Usuarios;
@@ -29,15 +29,49 @@ public class ControladorIncluirVenta {
         Transaction tx = sesion.beginTransaction();
 
         try {
+            // Verificar la existencia del usuario
+            String hqlUsuario = "FROM Clientes WHERE nombre_cliente = :nombre_cliente";
+            Query<Clientes> queryUsuario = sesion.createQuery(hqlUsuario, Clientes.class);
+            queryUsuario.setParameter("nombre_cliente", nombre_cliente);
+
+            Clientes clienteExistente = queryUsuario.uniqueResult();
+
+            if (clienteExistente != null) {
+                // El usuario existe, ahora puedes verificar la existencia del juego
+                String hqlJuegos = "FROM Juegos WHERE nombre_juego = :nombre_juego AND plataforma = :plataforma AND precio = :precio";
+                Query<Juegos> queryJuegos = sesion.createQuery(hqlJuegos, Juegos.class);
+                queryJuegos.setParameter("nombre_juego", nombre_juego);
+                queryJuegos.setParameter("plataforma", plataforma);
+                queryJuegos.setParameter("precio", precio);
+
+                Juegos juegoExistente = queryJuegos.uniqueResult();
+
+                // Verificar si se encontró un juego con las credenciales proporcionadas
+                if (juegoExistente != null) {
+                    repetido = true;
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            tx.commit();
+            sesion.close();
+        }
+
+        return repetido;
+    }
+    
+    
+    /* public boolean comprobarRepetidosClientes(String nombre_cliente) {
+        boolean repetido = false;
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+        Session sesion = sessionFactory.openSession();
+        Transaction tx = sesion.beginTransaction();
+
+        try {
             // Crear la consulta HQL
-            String hql = "FROM Juegos WHERE nombre_juego =  :nombre_juego AND plataforma = :plataforma AND precio = :precio";
-            Query<Juegos> query = sesion.createQuery(hql, Juegos.class);
-            query.setParameter("nombre_juego", nombre_juego);
-            query.setParameter("plataforma", plataforma);
-            query.setParameter("precio", precio);
-            
             String hql2 = "FROM Clientes WHERE nombre_cliente = :nombre_cliente";
-            Query<Clientes> query1 = sesion.createQuery(hql, Clientes.class);
+            Query<Clientes> query1 = sesion.createQuery(hq2, Clientes.class);
             query1.setParameter("nombre_cliente", nombre_cliente);
 
             // Obtener el resultado de la consulta
@@ -57,7 +91,7 @@ public class ControladorIncluirVenta {
         }
 
         return repetido;
-    }
+    }*/
     
     
     
@@ -127,8 +161,12 @@ public class ControladorIncluirVenta {
     }
     
     
-    public void registarVenta(double precio_venta, Date fecha_venta){
-        Session session = HibernateUtil.getSessionFactory().openSession();
+    /*public void registarVenta(double precio_venta, Date fecha_venta){
+      
+    }*/
+
+    public void registrarVenta(double precio_venta, Date fecha_venta) {
+          Session session = HibernateUtil.getSessionFactory().openSession();
 
         // Comienza una transacción
         Transaction transaction = null;

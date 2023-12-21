@@ -14,6 +14,7 @@ public class Juegos implements java.io.Serializable {
 	private String nombreJuego;
 	private String plataforma;
 	private double precio;
+        private int id_usuario;
 	private Set ventases = new HashSet(0);
 
 	public Juegos() {
@@ -27,11 +28,12 @@ public class Juegos implements java.io.Serializable {
             
 	}
 
-	public Juegos(Usuarios usuarios, String nombreJuego, String plataforma, double precio, Set ventases) {
+	public Juegos(Usuarios usuarios, String nombreJuego, String plataforma, double precio, int id_usuario, Set ventases) {
 		this.usuarios = usuarios;
 		this.nombreJuego = nombreJuego;
 		this.plataforma = plataforma;
 		this.precio = precio;
+                this.id_usuario = id_usuario;
 		this.ventases = ventases;
 	}
 
@@ -74,6 +76,16 @@ public class Juegos implements java.io.Serializable {
 	public void setPrecio(double precio) {
 		this.precio = precio;
 	}
+
+        public int getId_usuario() {
+            return id_usuario;
+        }
+
+        public void setId_usuario(int id_usuario) {
+            this.id_usuario = id_usuario;
+        }
+        
+        
 
 	public Set getVentases() {
 		return this.ventases;

@@ -6,7 +6,8 @@ package Vista;
 
 import Controlador.ControladorIncluirVenta;
 import java.time.LocalDate;
-import java.util.Date;
+import java.sql.Date;
+import java.time.LocalDate;
 import javax.swing.JOptionPane;
 
 /**
@@ -152,9 +153,10 @@ public class panelIntroducir extends javax.swing.JPanel {
         double perc = Double.parseDouble(precio.getText());
         String client = cliente.getText();
         LocalDate fecha = LocalDate.now();
+        Date date = Date.valueOf(fecha);
 
         // Convertir LocalDate a java.sql.Date
-        Date date = java.sql.Date.valueOf(fecha);
+        
         
         //comprobamos si existe ya una venta similar
         boolean com = civ.comprobarRepetidos(titulo, plat, perc, client);
@@ -170,7 +172,7 @@ public class panelIntroducir extends javax.swing.JPanel {
             } else {
                 civ.introducirJuego(titulo, plat, perc);
                 civ.introducirCliente(client);
-                //civ.registrarVenta(perc, date);
+                civ.registrarVenta(perc, date);
                 JOptionPane.showMessageDialog(null, "Venta registrada correctamente");
                 //limpiamos los campos tras introducir
                 nombreJuego.setText("");
