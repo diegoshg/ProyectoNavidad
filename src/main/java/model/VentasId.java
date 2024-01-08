@@ -13,14 +13,14 @@ public class VentasId implements java.io.Serializable {
         
         private int idVenta;
 	private Date fechaVenta;
-	private int idCliente;
-	private int idJuego;
+	private Integer idCliente;
+	private Integer idJuego;
 	private double precioVenta;
         
 	public VentasId() {
 	}
 
-	public VentasId(int idVenta, Date fechaVenta, int idCliente, int idJuego, double precioVenta) {
+	public VentasId(int idVenta, Date fechaVenta, Integer idCliente, Integer idJuego, double precioVenta) {
 		this.idVenta = idVenta;
                 this.fechaVenta = fechaVenta;
 		this.idCliente = idCliente;
@@ -44,19 +44,19 @@ public class VentasId implements java.io.Serializable {
 		this.fechaVenta = fechaVenta;
 	}
 
-	public int getIdCliente() {
+	public Integer getIdCliente() {
 		return this.idCliente;
 	}
 
-	public void setIdCliente(int idCliente) {
+	public void setIdCliente(Integer idCliente) {
 		this.idCliente = idCliente;
 	}
 
-	public int getIdJuego() {
+	public Integer getIdJuego() {
 		return this.idJuego;
 	}
 
-	public void setIdJuego(int idJuego) {
+	public void setIdJuego(Integer idJuego) {
 		this.idJuego = idJuego;
 	}
 

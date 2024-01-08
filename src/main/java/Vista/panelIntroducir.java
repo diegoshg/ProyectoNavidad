@@ -9,6 +9,8 @@ import java.time.LocalDate;
 import java.sql.Date;
 import java.time.LocalDate;
 import javax.swing.JOptionPane;
+import model.Clientes;
+import model.Juegos;
 
 /**
  *
@@ -17,6 +19,8 @@ import javax.swing.JOptionPane;
 public class panelIntroducir extends javax.swing.JPanel {
     //Llamamos al controlador de la clase
     private Controlador.ControladorIncluirVenta civ = new ControladorIncluirVenta();
+    private Juegos j = new Juegos();
+    private Clientes c = new Clientes();
     /**
      * Creates new form panelIntroducir
      */
@@ -148,19 +152,18 @@ public class panelIntroducir extends javax.swing.JPanel {
     //boton para introducir una nueva venta
     private void botonIntroducirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonIntroducirActionPerformed
         //pasamos los datos a varibale
-        String titulo = nombreJuego.getText();
-        String plat = plataforma.getText();
-        double perc = Double.parseDouble(precio.getText());
-        String client = cliente.getText();
-        LocalDate fecha = LocalDate.now();
-        Date date = Date.valueOf(fecha);
-
         // Convertir LocalDate a java.sql.Date
-        
-        
         //comprobamos si existe ya una venta similar
-        boolean com = civ.comprobarRepetidos(titulo, plat, perc, client);
+        
         try {
+            
+            String titulo = nombreJuego.getText();
+            String plat = plataforma.getText();
+            double perc = Double.parseDouble(precio.getText());
+            String client = cliente.getText();
+            LocalDate fecha = LocalDate.now();
+            Date date = Date.valueOf(fecha);
+            boolean com = civ.comprobarRepetidos(titulo, plat, perc, client);
             //si existe avisamos al usuario
             if (com) {
                 JOptionPane.showMessageDialog(null, "La venta ya está registrada", "Error", JOptionPane.INFORMATION_MESSAGE);
@@ -170,15 +173,23 @@ public class panelIntroducir extends javax.swing.JPanel {
                 cliente.setText("");
             //sino introducimos los datos en sus respectivas tablas, he conseguido introducir el juego y el cliente pero no la venta.
             } else {
-                civ.introducirJuego(titulo, plat, perc);
-                civ.introducirCliente(client);
-                civ.registrarVenta(perc, date);
+                int idCliente = civ.obtenerIdClientePorNombre(client);
+                int idJuego = civ.comprobarJuegoExiste(titulo, plat);
+                if (idJuego == -1) {
+                    civ.introducirJuego(titulo, plat, perc);
+                }
+                if (idCliente == -1) {
+                    civ.introducirCliente(client);    
+                }
+                
+                civ.registrarVenta(idJuego, idCliente, perc, date);
                 JOptionPane.showMessageDialog(null, "Venta registrada correctamente");
                 //limpiamos los campos tras introducir
                 nombreJuego.setText("");
                 plataforma.setText("");
                 precio.setText("");
-                cliente.setText("");
+                cliente.setText("");   
+                
             }
             //manejo de excepciones
         } catch (ClassCastException e) {

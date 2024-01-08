@@ -63,6 +63,47 @@ public class ControladorIncluirVenta {
     }
     
     
+     public int comprobarJuegoExiste(String nombre_juego, String plataforma) {
+        int idJuego = -1; // Default value if not found
+
+        Session session = HibernateUtil.getSessionFactory().openSession();
+
+        try {
+            String hql = "SELECT j.id_juego FROM Juegos j WHERE j.nombre_juego = :nombre_juego AND j.plataforma = :plataforma";
+            Query<Integer> query = session.createQuery(hql, Integer.class);
+            query.setParameter("nombre_juego", nombre_juego);
+            query.setParameter("plataforma", plataforma);
+
+            idJuego = query.uniqueResult();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+
+        return idJuego;
+    }
+    
+   public int obtenerIdClientePorNombre(String nombreCliente) {
+        int idCliente = -1; // Default value if not found
+
+        Session session = HibernateUtil.getSessionFactory().openSession();
+
+        try {
+            String hql = "SELECT c.id_cliente FROM Clientes c WHERE c.nombre_cliente = :nombre_cliente";
+            Query<Integer> query = session.createQuery(hql, Integer.class);
+            query.setParameter("nombre_cliente", nombreCliente);
+
+            idCliente = query.uniqueResult();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+
+        return idCliente;
+    }
+    
     /* public boolean comprobarRepetidosClientes(String nombre_cliente) {
         boolean repetido = false;
         SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
@@ -134,7 +175,7 @@ public class ControladorIncluirVenta {
     }
     
     
-    public void introducirCliente(String mombre_cliente) {
+    public void introducirCliente(String nombre_cliente) {
         // Obtén la sesión de Hibernate
         Session session = HibernateUtil.getSessionFactory().openSession();
 
@@ -145,7 +186,7 @@ public class ControladorIncluirVenta {
             // Comienza la transacción
             transaction = session.beginTransaction(); 
             Clientes c = new Clientes();
-            c.setNombreCliente(mombre_cliente);
+            c.setNombreCliente(nombre_cliente);
             
             Ventas v = new Ventas();
             v.setClientes(c);
@@ -167,25 +208,34 @@ public class ControladorIncluirVenta {
     
     
    
-    public void registrarVenta(double precio_venta, Date fecha_venta) {
-         Session session = HibernateUtil.getSessionFactory().openSession();
+    public void registrarVenta(int idJuego, int idCliente, double precioVenta, Date fechaVenta) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
 
-    // Comienza una transacción
+        // Comienza una transacción
         Transaction transaction = null;
 
         try {
             // Comienza la transacción
             transaction = session.beginTransaction();
 
-            // Crea una instancia de Ventas
-            Ventas venta = new Ventas();
+            // Verifica si los IDs de juego y cliente existen antes de proceder
+            Juegos juego = session.get(Juegos.class, idJuego);
+            Clientes cliente = session.get(Clientes.class, idCliente);
+
+            if (juego == null || cliente == null) {
+                System.out.println("Error: Juego o cliente no encontrado.");
+                return;
+            }
 
             // Crea una instancia de VentasId y establece sus propiedades
             VentasId ventasId = new VentasId();
-            ventasId.setPrecioVenta(precio_venta);
-            ventasId.setFechaVenta((java.sql.Date) fecha_venta);
+            ventasId.setIdJuego(idJuego);
+            ventasId.setIdCliente(idCliente);
+            ventasId.setPrecioVenta(precioVenta);
+            ventasId.setFechaVenta(fechaVenta);
 
-            // Establece la clave primaria compuesta en la entidad Ventas
+            // Crea una instancia de Ventas y establece su clave primaria compuesta
+            Ventas venta = new Ventas();
             venta.setId(ventasId);
 
             // Guarda la entidad Ventas en la base de datos
@@ -198,7 +248,7 @@ public class ControladorIncluirVenta {
             if (transaction != null) {
                 transaction.rollback();
             }
-            e.printStackTrace(); 
+            e.printStackTrace();
         } finally {
             // Cierra la sesión de Hibernate
             session.close();
