@@ -69,12 +69,17 @@ public class ControladorIncluirVenta {
         Session session = HibernateUtil.getSessionFactory().openSession();
 
         try {
-            String hql = "SELECT j.id_juego FROM Juegos j WHERE j.nombre_juego = :nombre_juego AND j.plataforma = :plataforma";
+            String hql = "SELECT j.idJuego FROM Juegos j WHERE j.nombreJuego = :nombre_juego AND j.plataforma = :plataforma";
             Query<Integer> query = session.createQuery(hql, Integer.class);
             query.setParameter("nombre_juego", nombre_juego);
             query.setParameter("plataforma", plataforma);
 
-            idJuego = query.uniqueResult();
+             Integer result = query.uniqueResult();
+
+        // Check for null before invoking intValue()
+        if (result != null) {
+            idJuego = result.intValue();
+        }
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -90,11 +95,16 @@ public class ControladorIncluirVenta {
         Session session = HibernateUtil.getSessionFactory().openSession();
 
         try {
-            String hql = "SELECT c.id_cliente FROM Clientes c WHERE c.nombre_cliente = :nombre_cliente";
+            String hql = "SELECT c.idCliente FROM Clientes c WHERE c.nombreCliente = :nombre_cliente";
             Query<Integer> query = session.createQuery(hql, Integer.class);
             query.setParameter("nombre_cliente", nombreCliente);
 
-            idCliente = query.uniqueResult();
+            Integer result = query.uniqueResult();
+
+        // Check for null before invoking intValue()
+        if (result != null) {
+            idCliente = result.intValue();
+        }
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -208,7 +218,7 @@ public class ControladorIncluirVenta {
     
     
    
-    public void registrarVenta(int idJuego, int idCliente, double precioVenta, Date fechaVenta) {
+    public void registrarVenta(Juegos j, Clientes c, double precioVenta, Date fechaVenta) {
         Session session = HibernateUtil.getSessionFactory().openSession();
 
         // Comienza una transacción
@@ -219,25 +229,26 @@ public class ControladorIncluirVenta {
             transaction = session.beginTransaction();
 
             // Verifica si los IDs de juego y cliente existen antes de proceder
-            Juegos juego = session.get(Juegos.class, idJuego);
-            Clientes cliente = session.get(Clientes.class, idCliente);
-
+            Juegos juego = session.get(Juegos.class, j.getIdJuego());
+            Clientes cliente = session.get(Clientes.class, c.getIdCliente());
+            VentasId ventasId = new VentasId();    
             if (juego == null || cliente == null) {
                 System.out.println("Error: Juego o cliente no encontrado.");
-                return;
+               
+                ventasId.setIdJuego(j.getIdJuego());
+                ventasId.setIdCliente(c.getIdCliente());
+                ventasId.setPrecioVenta(precioVenta);
+                ventasId.setFechaVenta(fechaVenta);
+
+                // Crea una instancia de Ventas y establece su clave primaria compuesta
+                
+
+             
             }
 
             // Crea una instancia de VentasId y establece sus propiedades
-            VentasId ventasId = new VentasId();
-            ventasId.setIdJuego(idJuego);
-            ventasId.setIdCliente(idCliente);
-            ventasId.setPrecioVenta(precioVenta);
-            ventasId.setFechaVenta(fechaVenta);
-
-            // Crea una instancia de Ventas y establece su clave primaria compuesta
             Ventas venta = new Ventas();
-            venta.setId(ventasId);
-
+                venta.setId(ventasId);
             // Guarda la entidad Ventas en la base de datos
             session.save(venta);
 

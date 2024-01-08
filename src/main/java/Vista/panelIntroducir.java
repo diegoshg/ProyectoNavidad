@@ -11,6 +11,7 @@ import java.time.LocalDate;
 import javax.swing.JOptionPane;
 import model.Clientes;
 import model.Juegos;
+import model.VentasId;
 
 /**
  *
@@ -21,6 +22,7 @@ public class panelIntroducir extends javax.swing.JPanel {
     private Controlador.ControladorIncluirVenta civ = new ControladorIncluirVenta();
     private Juegos j = new Juegos();
     private Clientes c = new Clientes();
+    private VentasId vi;
     /**
      * Creates new form panelIntroducir
      */
@@ -175,21 +177,18 @@ public class panelIntroducir extends javax.swing.JPanel {
             } else {
                 int idCliente = civ.obtenerIdClientePorNombre(client);
                 int idJuego = civ.comprobarJuegoExiste(titulo, plat);
-                if (idJuego == -1) {
+                if (idJuego == -1 && idCliente == -1) {
                     civ.introducirJuego(titulo, plat, perc);
+                    civ.introducirCliente(client);
+                    vi = new VentasId();
+                    civ.registrarVenta(vi);
+                    JOptionPane.showMessageDialog(null, "Venta registrada correctamente");
+                    //limpiamos los campos tras introducir
+                    nombreJuego.setText("");
+                    plataforma.setText("");
+                    precio.setText("");
+                    cliente.setText(""); 
                 }
-                if (idCliente == -1) {
-                    civ.introducirCliente(client);    
-                }
-                
-                civ.registrarVenta(idJuego, idCliente, perc, date);
-                JOptionPane.showMessageDialog(null, "Venta registrada correctamente");
-                //limpiamos los campos tras introducir
-                nombreJuego.setText("");
-                plataforma.setText("");
-                precio.setText("");
-                cliente.setText("");   
-                
             }
             //manejo de excepciones
         } catch (ClassCastException e) {
