@@ -4,12 +4,16 @@
  */
 package Vista;
 
+import Controlador.ControladorListar;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Diego Sanchez Gandara
  */
 public class panelListar extends javax.swing.JPanel {
-
+    
+    private ControladorListar cl = new ControladorListar();
     /**
      * Creates new form panelListar
      */
@@ -37,6 +41,11 @@ public class panelListar extends javax.swing.JPanel {
         botonRefrescar.setForeground(new java.awt.Color(255, 255, 255));
         botonRefrescar.setText("Refresh");
         botonRefrescar.setToolTipText("refrescar tabla");
+        botonRefrescar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonRefrescarActionPerformed(evt);
+            }
+        });
 
         botonBorrar.setBackground(new java.awt.Color(6, 2, 221));
         botonBorrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/papelera .png"))); // NOI18N
@@ -88,6 +97,11 @@ public class panelListar extends javax.swing.JPanel {
                     .addComponent(botonBorrar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void botonRefrescarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRefrescarActionPerformed
+       DefaultTableModel modelo = cl.recogerDatos();
+       tablaFinal.setModel(modelo);
+    }//GEN-LAST:event_botonRefrescarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

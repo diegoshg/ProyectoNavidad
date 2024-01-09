@@ -181,7 +181,7 @@ public class panelIntroducir extends javax.swing.JPanel {
                     civ.introducirJuego(titulo, plat, perc);
                     civ.introducirCliente(client);
                     vi = new VentasId();
-                    civ.registrarVenta(vi);
+                    //civ.registrarVenta(vi);
                     JOptionPane.showMessageDialog(null, "Venta registrada correctamente");
                     //limpiamos los campos tras introducir
                     nombreJuego.setText("");

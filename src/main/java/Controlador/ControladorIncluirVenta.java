@@ -248,7 +248,7 @@ public class ControladorIncluirVenta {
 
             // Crea una instancia de VentasId y establece sus propiedades
             Ventas venta = new Ventas();
-                venta.setId(ventasId);
+            venta.setId(ventasId);
             // Guarda la entidad Ventas en la base de datos
             session.save(venta);
 
